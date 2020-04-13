@@ -31,12 +31,12 @@ Call magi::visit
 ```cxx
   A a; E e;
   tp1* t1 = &a;
-  tp1* t2 = &e;
+  tp2* t2 = &e;
   
   // return ae
   magi::visit(magi::make_visitor{
       [](A&, E&) { return "ae"; },
       [](B&, C&) { return "bc"; },
       [](auto&, auto&) { return "other"; }
-  }, *t1, *t2, *t3) );
+  }, *t1, *t2) );
 ```
