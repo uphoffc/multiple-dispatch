@@ -3,24 +3,24 @@
 #include <string>
 #include <algorithm>
 
-#include <magi/type.hpp>
-#include <magi/visit.hpp>
+#include <md/type.hpp>
+#include <md/visit.hpp>
 
-using tp1 = magi::type<class A,
+using tp1 = md::type<class A,
                        class B>;
-using tp2 = magi::type<class C,
+using tp2 = md::type<class C,
                        class D,
                        class E>;
-using tp3 = magi::type<class F,
+using tp3 = md::type<class F,
                        class G>;
 
-class A : public magi::with_type<A,tp1> {};
-class B : public magi::with_type<B,tp1> {};
-class C : public magi::with_type<C,tp2> {};
-class D : public magi::with_type<D,tp2> {};
-class E : public magi::with_type<E,tp2> {};
-class F : public magi::with_type<F,tp3> {};
-class G : public magi::with_type<G,tp3> {};
+class A : public md::with_type<A,tp1> {};
+class B : public md::with_type<B,tp1> {};
+class C : public md::with_type<C,tp2> {};
+class D : public md::with_type<D,tp2> {};
+class E : public md::with_type<E,tp2> {};
+class F : public md::with_type<F,tp3> {};
+class G : public md::with_type<G,tp3> {};
 
 int main(int argc, char** argv) {
   tp1* t1 = nullptr;
@@ -36,7 +36,7 @@ int main(int argc, char** argv) {
     t3 = &g;
   }
 
-  TEST("aeg" == magi::visit(magi::make_visitor{
+  TEST("aeg" == md::visit(md::make_visitor{
       [](A&, E&, G&) { return "aeg"; },
       [](B&, C&, F&) { return "bcf"; },
       [](auto&, auto&, auto&) { return "other"; }

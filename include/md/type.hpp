@@ -4,7 +4,7 @@
 #include <type_traits>
 #include <limits>
 
-namespace magi {
+namespace md {
   template<typename... Ts>
   class type;
 

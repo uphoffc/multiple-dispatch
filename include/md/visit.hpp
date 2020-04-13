@@ -6,7 +6,7 @@
 
 #include "type.hpp"
 
-namespace magi {
+namespace md {
   namespace detail {
     template<typename... Ts>
     struct compute_stride {

@@ -1,24 +1,24 @@
 #include "test.h"
 
-#include <magi/type.hpp>
-#include <magi/visit.hpp>
+#include <md/type.hpp>
+#include <md/visit.hpp>
 
-using tp = magi::type<class A,
+using tp = md::type<class A,
                       class B,
                       class C,
                       class D>;
 
-class A : public magi::with_type<A,tp> {
+class A : public md::with_type<A,tp> {
 };
-class B : public magi::with_type<B,A> {
+class B : public md::with_type<B,A> {
 public:
   double b = 1.;
 };
-class C : public magi::with_type<C,B> {
+class C : public md::with_type<C,B> {
 public:
   double c = 2.;
 };
-class D : public magi::with_type<D,tp> {
+class D : public md::with_type<D,tp> {
 public:
   double d = 3.;
 };
@@ -46,10 +46,10 @@ int main(int argc, char** argv) {
     t2 = &c;
   }
 
-  TEST(1.0/2.0 == magi::visit(Vis(), b, *t2));
-  TEST(2.0/1.0 == magi::visit(Vis(), *t2, b));
-  TEST(3.0/2.0 == magi::visit(Vis(), *t1, *t2));
-  TEST(2.0/3.0 == magi::visit(Vis(), *t2, *t1));
+  TEST(1.0/2.0 == md::visit(Vis(), b, *t2));
+  TEST(2.0/1.0 == md::visit(Vis(), *t2, b));
+  TEST(3.0/2.0 == md::visit(Vis(), *t1, *t2));
+  TEST(2.0/3.0 == md::visit(Vis(), *t2, *t1));
 
   return 0;
 }
