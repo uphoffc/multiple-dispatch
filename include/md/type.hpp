@@ -61,6 +61,8 @@ namespace md {
   template<typename Derived, typename Base>
   class with_type : public Base {
   public:
+    using Base::Base;
+
     int get_type_id() const noexcept override {
       return Base::compute_type_id(static_cast<Derived const*>(this));
     }
