@@ -40,6 +40,11 @@ namespace md {
     constexpr get_type_t<I, Ts...>& cast_type(type<Ts...>& t) {
       return static_cast<get_type_t<I, Ts...>&>(t);
     }
+
+    template<int I, typename... Ts>
+    constexpr get_type_t<I, Ts...> const& cast_type(type<Ts...> const& t) {
+      return static_cast<get_type_t<I, Ts...> const&>(t);
+    }
   }
 
   template<typename... Ts>
