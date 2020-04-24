@@ -63,6 +63,11 @@ namespace md {
     static constexpr auto get_num_types() { return sizeof...(Ts); }
   };
 
+  template<typename T, typename... Ts>
+  bool is_type(type<Ts...> const* obj) {
+    return obj->get_type_id() == type<Ts...>::compute_type_id(static_cast<T const*>(obj));
+  }
+
   template<typename Derived, typename Base>
   class with_type : public Base {
   public:
